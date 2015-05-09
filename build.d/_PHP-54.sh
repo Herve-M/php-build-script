@@ -28,7 +28,7 @@ then
 fi
 
 displayAndExec "\\ Verify PHP archive      " "gpg --verify SRC/PHP/$PHP_54_FILE$SIG_FILE_EXT SRC/PHP/$PHP_54_FILE"
-#displayAndExec "\\ Extract PHP archive     " "tar jxf SRC/PHP/$PHP_54_FILE --directory SRC/PHP/"
+displayAndExec "\\ Extract PHP archive     " "tar jxf SRC/PHP/$PHP_54_FILE --directory SRC/PHP/"
 
 #Build step
 folder=${PHP_54_FILE%.tar.bz2}
