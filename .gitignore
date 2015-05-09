@@ -1,0 +1,9 @@
+# Packages #
+############
+*.7z
+*.gz
+*.xz
+*.tgz
+*.rar
+*.tar
+*.zip
