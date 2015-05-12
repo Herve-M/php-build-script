@@ -9,6 +9,9 @@ cd SRC/EXT/
 
 for file in *.*
 do
+  if [ -d "$file" ]; then
+    break
+  fi
   displayMessage "\\ Extracting $file"
   extract $file
 done

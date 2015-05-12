@@ -10,4 +10,4 @@ REAL_BACKUP_DAY="$(date "+%d_%m_%Y" -d "$DAYS days ago")"
 
 LOG_FILE="/tmp/phpbuild-$NOW.log"
 
-readonly PHP_INSTALL_FOLDER=/opt/PHP/
+readonly NB_CORE=4

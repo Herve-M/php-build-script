@@ -1,12 +1,12 @@
 displayMessage "[PHP-5.4.X]"
 
-if [ "$ARG_NEW_INSTALL" = true ]
+if [ "$ARG_NEW_INSTALL" = true ]; then
   cp FILE/php/init.d/php-5.4-fpm /etc/init.d/
   cp FILE/php/PHP/5.4/php-fpm.conf /etc/PHP/5.4/
   cp FILE/php/PHP/5.4/php.ini /etc/PHP/5.4/
 fi
 
-if [ "$ARG_REFRESH_EXT" != true ]
+if [ "$ARG_REFRESH_EXT" != true ]; then
   #Download
   _PHP_ARCHIVE=$(echo $MIRROR | sed -e "s/FILE/${PHP_54_FILE}/g")
   _PHP_ARCHIVE_SIG=$(echo $MIRROR | sed -e "s/FILE/${PHP_54_FILE}${SIG_FILE_EXT}/g")
@@ -41,7 +41,7 @@ if [ "$ARG_REFRESH_EXT" != true ]
   folder=${PHP_54_FILE%.tar.bz2}
   cd SRC/PHP/$folder
   displayAndExec "\\ Configure PHP           " "$PHP_54_BCONF"
-  displayAndExec "\\ Bulding PHP             " "make -j 4"
+  displayAndExec "\\ Bulding PHP             " "make -j $NB_CORE"
   #Install step
   displayAndExec "\\ Shutting down PHP       " "service php-5.4-fpm stop"
   displayAndExec "\\ Installing PHP          " "make install"
@@ -60,17 +60,18 @@ do
   if [[ $D == *"cphalcon"* ]]
   then
     cd build/64bits
-    export CFLAGS="-O2 --fvisibility=hidden"
-    $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize
-    displayAndExec "\\ Configuring $D      " "./configure --enable-phalcon --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize/bin/php-config"
-    displayAndExec "\\ Bulding EXT         " "make -j 4"
+    #export CFLAGS="-O2 --fvisibility=hidden"
+    $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize 1>/dev/null
+    displayAndExec "\\ Configuring $D      " "./configure --enable-phalcon --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/php-config"
+    displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
     displayAndExec "\\ Installing EXT      " "make install"
     displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
+    #unset CFLAGS
     cd ../..
   else
-    $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize
-    displayAndExec "\\ Configuring $D      " "./configure --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize/bin/php-config"
-    displayAndExec "\\ Bulding EXT         " "make -j 4"
+    $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize 1>/dev/null
+    displayAndExec "\\ Configuring $D      " "./configure --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/php-config"
+    displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
     displayAndExec "\\ Installing EXT      " "make install"
     displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
   fi
