@@ -45,11 +45,25 @@ cd SRC/EXT/
 #Ext step
 for D in `find . -mindepth 1 -maxdepth 1 -type d`
 do
-  /opt/PHP/5.4/bin/phpize
-  displayAndExec "\\ Configuring $D      " "./configure --with-php-config=/opt/PHP/5.4/bin/php-config"
-  displayAndExec "\\ Bulding EXT         " "make -j 4"
-  displayAndExec "\\ Installing EXT      " "make install"
-  displayAndExec "\\ Cleaning EXT        " "make clean && phpize --clean"
+  cd $D
+  if [[ $D == *"cphalcon"* ]]
+  then
+    cd build/64bits
+    export CFLAGS="-O2 --fvisibility=hidden"
+    $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize
+    displayAndExec "\\ Configuring $D      " "./configure --enable-phalcon --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize/bin/php-config"
+    displayAndExec "\\ Bulding EXT         " "make -j 4"
+    displayAndExec "\\ Installing EXT      " "make install"
+    displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
+    cd ../..
+  else
+    $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize
+    displayAndExec "\\ Configuring $D      " "./configure --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize/bin/php-config"
+    displayAndExec "\\ Bulding EXT         " "make -j 4"
+    displayAndExec "\\ Installing EXT      " "make install"
+    displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
+  fi
+  cd ..
 done
 
 cd ../../..
