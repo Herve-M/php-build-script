@@ -43,13 +43,13 @@ if [ "$ARG_REFRESH_EXT" != true ]; then
   displayAndExec "\\ Configure PHP           " "$PHP_54_BCONF"
   displayAndExec "\\ Bulding PHP             " "make -j $NB_CORE"
   #Install step
-  displayAndExec "\\ Shutting down PHP       " "service php-5.4-fpm stop"
-  displayAndExec "\\ Installing PHP          " "make install"
+  displayAndExec "\\ Shutting down PHP       " "sudo service php-5.4-fpm stop"
+  displayAndExec "\\ Installing PHP          " "sudo make install"
 
   cd ../../..
 fi
 
-[ ! -x $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize ] && displayErrorAndExit "Error : phpize for PHP 5.4 don't exist"
+[ ! -x $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize ] && displayErrorAndExit 1 "Error : phpize for PHP 5.4 don't exist"
 
 cd SRC/EXT/
 
@@ -64,7 +64,7 @@ do
     $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize 1>/dev/null
     displayAndExec "\\ Configuring $D      " "./configure --enable-phalcon --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/php-config"
     displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
-    displayAndExec "\\ Installing EXT      " "make install"
+    displayAndExec "\\ Installing EXT      " "sudo make install"
     displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
     #unset CFLAGS
     cd ../..
@@ -72,10 +72,10 @@ do
     $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize 1>/dev/null
     displayAndExec "\\ Configuring $D      " "./configure --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/php-config"
     displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
-    displayAndExec "\\ Installing EXT      " "make install"
+    displayAndExec "\\ Installing EXT      " "sudo make install"
     displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
   fi
   cd ..
 done
 
-cd ../../..
+cd ../..

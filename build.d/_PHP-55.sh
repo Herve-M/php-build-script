@@ -1,5 +1,5 @@
 displayMessage "[PHP-5.5.X]"
-
+pwd
 if [ "$ARG_NEW_INSTALL" = true ]; then
   cp FILE/php/init.d/php-5.5-fpm /etc/init.d/
   cp FILE/php/PHP/5.5/php-fpm.conf /etc/PHP/5.5/
@@ -35,21 +35,21 @@ if [ "$ARG_REFRESH_EXT" != true ]; then
   fi
 
   displayAndExec "\\ Verify PHP archive      " "gpg --verify SRC/PHP/$PHP_55_FILE$SIG_FILE_EXT SRC/PHP/$PHP_55_FILE"
-  displayAndExec "\\ Extract PHP archive     " "tar jxf SRC/PHP/$PHP_55_FILE --directory SRC/PHP/"
+  displayAndExec "\\ Extract PHP archive     " "tar Jxf SRC/PHP/$PHP_55_FILE --directory SRC/PHP/"
 
   #Build step
-  folder=${PHP_55_FILE%.tar.bz2}
+  folder=${PHP_55_FILE%.tar.xz}
   cd SRC/PHP/$folder
   displayAndExec "\\ Configure PHP           " "$PHP_55_BCONF"
   displayAndExec "\\ Bulding PHP             " "make -j $NB_CORE"
   #Install step
-  displayAndExec "\\ Shutting down PHP       " "service php-5.5-fpm stop"
-  displayAndExec "\\ Installing PHP          " "make install"
+  displayAndExec "\\ Shutting down PHP       " "sudo service php-5.5-fpm stop"
+  displayAndExec "\\ Installing PHP          " "sudo make install"
 
   cd ../../..
 fi
 
-[ ! -x $PHP_INSTALL_FOLDER$PHP_55_FOLDER/bin/phpize ] && displayErrorAndExit "Error : phpize for PHP 5.5 don't exist"
+[ ! -x $PHP_INSTALL_FOLDER$PHP_55_FOLDER/bin/phpize ] && displayErrorAndExit 1 "Error : phpize for PHP 5.5 don't exist"
 
 cd SRC/EXT/
 
@@ -63,7 +63,7 @@ do
     $PHP_INSTALL_FOLDER$PHP_55_FOLDER/bin/phpize 1>/dev/null
     displayAndExec "\\ Configuring $D      " "./configure --enable-phalcon --with-php-config=$PHP_INSTALL_FOLDER$PHP_55_FOLDER/bin/php-config"
     displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
-    displayAndExec "\\ Installing EXT      " "make install"
+    displayAndExec "\\ Installing EXT      " "sudo make install"
     displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_55_FOLDER/bin/phpize --clean"
     #unset CFLAGS
     cd ../..
@@ -71,10 +71,10 @@ do
     $PHP_INSTALL_FOLDER$PHP_55_FOLDER/bin/phpize 1>/dev/null
     displayAndExec "\\ Configuring $D      " "./configure --with-php-config=$PHP_INSTALL_FOLDER$PHP_55_FOLDER/bin/php-config"
     displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
-    displayAndExec "\\ Installing EXT      " "make install"
+    displayAndExec "\\ Installing EXT      " "sudo make install"
     displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_55_FOLDER/bin/phpize --clean"
   fi
   cd ..
 done
 
-cd ../../..
+cd ../..
