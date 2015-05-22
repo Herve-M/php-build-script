@@ -1,5 +1,5 @@
 displayMessage "[PHP-5.5.X]"
-pwd
+
 if [ "$ARG_NEW_INSTALL" = true ]; then
   cp FILE/php/init.d/php-5.5-fpm /etc/init.d/
   cp FILE/php/PHP/5.5/php-fpm.conf /etc/PHP/5.5/
