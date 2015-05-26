@@ -5,11 +5,12 @@ if [ "$ARG_NEW_INSTALL" = true ]; then
   sudo cp FILE/php/init.d/php-5.4-fpm /etc/init.d/
   sudo cp FILE/php/PHP/5.4/php-fpm.conf /etc/PHP/5.4/
   sudo cp FILE/php/PHP/5.4/php.ini /etc/PHP/5.4/
-  cat >> /etc/fstab << EOI
+  sudo cat >> /etc/fstab << EOI
   #PHP 5.4
   /etc/PHP/5.4 /opt/PHP/5.4/etc none bind 0 0
   /var/log/PHP/5.4 /opt/PHP/5.4/var/log none bind 0 0
 EOI
+  sudo mount -a
 fi
 
 if [ "$ARG_REFRESH_EXT" != true ]; then

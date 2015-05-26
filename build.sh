@@ -56,18 +56,7 @@ while [ "$1" != "" ]; do
     shift
 done
 
-if [ "$ARG_NEW_INSTALL" = true ]; then
-  mkdir -p /var/log/PHP/{5,6,5.5,5.4,5.3}
-  mkdir -p /var/run/PHP/{5,6,5.5,5.4,5.3}
-  mkdir -p /etc/PHP/{5,6,5.5,5.4,5.3}
-  cat FILE/fstab >> /etc/fstab
-fi
-
 #
 for f in `ls $MY_DIR/build.d/_* | sort -g`; do
 	source "$f"
 done
-
-if [ "$ARG_NEW_INSTALL" = true ]; then
-  mount -a
-fi
