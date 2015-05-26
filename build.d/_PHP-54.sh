@@ -51,7 +51,7 @@ if [ "$ARG_REFRESH_EXT" != true ]; then
   #Install step
   displayAndExec "\\ Shutting down PHP       " "sudo service php-5.4-fpm stop"
   displayAndExec "\\ Installing PHP          " "sudo make install"
-  displayAndExec "\\ Installing PHP          " "make clean"
+  displayAndExec "\\ Cleaning PHP            " "make clean"
 
   cd ../../..
 fi
