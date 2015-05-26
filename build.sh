@@ -17,6 +17,7 @@ displayTitle "Server PHP Build Script"
 
 ARG_NEW_INSTALL=false
 ARG_REFRESH_EXT=false
+ARG_START_PHP=false
 
 function usage()
 {
@@ -42,6 +43,9 @@ while [ "$1" != "" ]; do
             ;;
         --only-ext)
 					ARG_REFRESH_EXT=true
+            ;;
+        --start-php)
+          ARG_START_PHP=true
             ;;
         *)
             echo "ERROR: unknown parameter \"$PARAM\""

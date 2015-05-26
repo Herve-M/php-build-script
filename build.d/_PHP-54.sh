@@ -85,3 +85,7 @@ do
 done
 
 cd ../..
+
+if [ "$ARG_START_PHP" = true ]; then
+  displayAndExec "\\ Starting PHP 5.4.X      " "sudo service php-5.4-fpm start"
+fi
