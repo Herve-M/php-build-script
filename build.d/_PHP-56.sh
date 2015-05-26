@@ -9,7 +9,7 @@ if [ "$ARG_NEW_INSTALL" = true ]; then
   #PHP 5.6
   /etc/PHP/5.6 /opt/PHP/5.6/etc none bind 0 0
   /var/log/PHP/5.6 /opt/PHP/5.6/var/log none bind 0 0
-  EOI
+EOI
 fi
 
 if [ "$ARG_REFRESH_EXT" != true ]; then
