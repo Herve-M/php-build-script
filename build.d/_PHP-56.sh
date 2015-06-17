@@ -2,7 +2,7 @@ displayMessage "[PHP-5.6.X]"
 
 if [ "$ARG_NEW_INSTALL" = true ]; then
   sudo mkdir -p /opt/PHP/5.6/{etc,var/log}
-  sudo mkdir -p /ect/PHP/5.6/
+  sudo mkdir -p /etc/PHP/5.6/
   sudo cp FILE/php/init.d/php-5.6-fpm /etc/init.d/
   sudo cp FILE/php/PHP/5.6/php-fpm.conf /etc/PHP/5.6/
   sudo cp FILE/php/PHP/5.6/php.ini /etc/PHP/5.6/

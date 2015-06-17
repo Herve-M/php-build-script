@@ -2,7 +2,7 @@ displayMessage "[PHP-5.4.X]"
 
 if [ "$ARG_NEW_INSTALL" = true ]; then
   sudo mkdir -p /opt/PHP/5.4/{etc,var/log}
-  sudo mkdir -p /ect/PHP/5.4/
+  sudo mkdir -p /etc/PHP/5.4/
   sudo cp FILE/php/init.d/php-5.4-fpm /etc/init.d/
   sudo cp FILE/php/PHP/5.4/php-fpm.conf /etc/PHP/5.4/
   sudo cp FILE/php/PHP/5.4/php.ini /etc/PHP/5.4/
