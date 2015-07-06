@@ -18,6 +18,7 @@ displayTitle "Server PHP Build Script"
 ARG_NEW_INSTALL=false
 ARG_REFRESH_EXT=false
 ARG_START_PHP=false
+ARG_BUILD_EXT=true;
 ARG_BEXT_PHP54=false
 ARG_BEXT_PHP55=false
 ARG_BEXT_PHP56=false
@@ -43,6 +44,9 @@ while [ "$1" != "" ]; do
             ;;
         --install)
 					ARG_NEW_INSTALL=true
+            ;;
+        --without-ext)
+					ARG_BUILD_EXT=false
             ;;
         --only-ext)
 					ARG_REFRESH_EXT=true
