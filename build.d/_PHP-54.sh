@@ -14,7 +14,7 @@ EOI
   sudo mount -a
 fi
 
-if [ "$ARG_REFRESH_EXT" != true ]; then
+if [ "$ARG_REFRESH_EXT" != true ] || [ "$ARG_BEXT_PHP54" != true ]; then
   #Download
   _PHP_ARCHIVE=$(echo $MIRROR | sed -e "s/FILE/${PHP_54_FILE}/g")
   _PHP_ARCHIVE_SIG=$(echo $MIRROR | sed -e "s/FILE/${PHP_54_FILE}${SIG_FILE_EXT}/g")

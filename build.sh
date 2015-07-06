@@ -18,6 +18,9 @@ displayTitle "Server PHP Build Script"
 ARG_NEW_INSTALL=false
 ARG_REFRESH_EXT=false
 ARG_START_PHP=false
+ARG_BEXT_PHP54=false
+ARG_BEXT_PHP55=false
+ARG_BEXT_PHP56=false
 
 function usage()
 {
@@ -43,6 +46,18 @@ while [ "$1" != "" ]; do
             ;;
         --only-ext)
 					ARG_REFRESH_EXT=true
+          ARG_BEXT_PHP54=true
+          ARG_BEXT_PHP55=true
+          ARG_BEXT_PHP56=true
+            ;;
+        --update-php54-ext)
+					ARG_BEXT_PHP54=true
+            ;;
+        --update-php55-ext)
+					ARG_BEXT_PHP55=true
+            ;;
+        --update-php56-ext)
+					ARG_BEXT_PHP56=true
             ;;
         --start-php)
           ARG_START_PHP=true
