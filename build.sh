@@ -16,22 +16,38 @@ source "${MY_DIR}/inc.version.sh"
 displayTitle "Server PHP Build Script"
 
 ARG_NEW_INSTALL=false
-ARG_REFRESH_EXT=false
 ARG_START_PHP=false
-ARG_BUILD_EXT=true;
+ARG_BUILD_PHP=true
+ARG_BPHP_PHP54=false
+ARG_BPHP_PHP55=false
+ARG_BPHP_PHP56=false
+ARG_BUILD_EXT=true
 ARG_BEXT_PHP54=false
 ARG_BEXT_PHP55=false
 ARG_BEXT_PHP56=false
 
 function usage()
 {
-    echo "PHP Build Script"
     echo ""
     echo "./build.sh"
-    echo "\t-h --help"
-    echo "\t--install For creating base folder"
-    echo "\t--only-ext For only update ext"
+    echo "-h --help"
+    echo "--install           | Full install, create folder, syslink and build all PHP versions + Ext"
+    echo "--without-ext       | Update all verions of PHP"
+    echo "--without-php       | Update all extention of all PHP versions"
+    echo "--update-php54      | Update PHP 5.4"
+    echo "--update-php55      | Update PHP 5.5"
+    echo "--update-php55      | Update PHP 5.6"
+    echo "--update-php54-ext  | Update PHP 5.4 extentions"
+    echo "--update-php55-ext  | Update PHP 5.5 extentions"
+    echo "--update-php55-ext  | Update PHP 5.6 extentions"
+    echo "--start-php         | Start PHP after install"
     echo ""
+
+    if [ "$ARG_BPHP_PHP54" = true ]||[ "$ARG_BUILD_PHP" = false ]; then
+      echo "lol"
+    else
+      echo "olo"
+    fi
 }
 
 while [ "$1" != "" ]; do
@@ -48,19 +64,31 @@ while [ "$1" != "" ]; do
         --without-ext)
 					ARG_BUILD_EXT=false
             ;;
-        --only-ext)
-					ARG_REFRESH_EXT=true
-          ARG_BEXT_PHP54=true
-          ARG_BEXT_PHP55=true
-          ARG_BEXT_PHP56=true
+        --without-php)
+					ARG_BUILD_PHP=false
+            ;;
+        --update-php54)
+          ARG_BUILD_EXT=false
+					ARG_BPHP_PHP54=true
+            ;;
+        --update-php55)
+          ARG_BUILD_EXT=false
+					ARG_BPHP_PHP55=true
+            ;;
+        --update-php56)
+          ARG_BUILD_EXT=false
+					ARG_BPHP_PHP56=true
             ;;
         --update-php54-ext)
+          ARG_BUILD_EXT=false
 					ARG_BEXT_PHP54=true
             ;;
         --update-php55-ext)
+          ARG_BUILD_EXT=false
 					ARG_BEXT_PHP55=true
             ;;
         --update-php56-ext)
+          ARG_BUILD_EXT=false
 					ARG_BEXT_PHP56=true
             ;;
         --start-php)

@@ -14,7 +14,7 @@ EOI
   sudo mount -a
 fi
 
-if [ "$ARG_REFRESH_EXT" != true ] || [ "$ARG_BEXT_PHP54" != true ]; then
+if [ "$ARG_BPHP_PHP54" = true ]||[ "$ARG_BUILD_PHP" = true ]; then
   #Download
   _PHP_ARCHIVE=$(echo $MIRROR | sed -e "s/FILE/${PHP_54_FILE}/g")
   _PHP_ARCHIVE_SIG=$(echo $MIRROR | sed -e "s/FILE/${PHP_54_FILE}${SIG_FILE_EXT}/g")
@@ -58,7 +58,7 @@ if [ "$ARG_REFRESH_EXT" != true ] || [ "$ARG_BEXT_PHP54" != true ]; then
   cd ../../..
 fi
 
-if [ "$ARG_BUILD_EXT" = true ] || [ "$ARG_REFRESH_EXT" = true ]; then
+if [ "$ARG_BEXT_PHP54" = true ]||[ "$ARG_BUILD_EXT" = true ]; then
   [ ! -x $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize ] && displayErrorAndExit 1 "Error : phpize for PHP 5.4 don't exist"
 
   cd SRC/EXT/

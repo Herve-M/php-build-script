@@ -7,3 +7,6 @@
 *.rar
 *.tar
 *.zip
+
+SRC/EXT/
+SRC/PHP/
