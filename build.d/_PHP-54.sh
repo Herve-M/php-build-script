@@ -14,7 +14,7 @@ EOI
   sudo mount -a
 fi
 
-if [ "$ARG_REFRESH_EXT" != true ]; then
+if [ "$ARG_BPHP_PHP54" = true ]||[ "$ARG_BUILD_PHP" = true ]; then
   #Download
   _PHP_ARCHIVE=$(echo $MIRROR | sed -e "s/FILE/${PHP_54_FILE}/g")
   _PHP_ARCHIVE_SIG=$(echo $MIRROR | sed -e "s/FILE/${PHP_54_FILE}${SIG_FILE_EXT}/g")
@@ -58,36 +58,38 @@ if [ "$ARG_REFRESH_EXT" != true ]; then
   cd ../../..
 fi
 
-[ ! -x $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize ] && displayErrorAndExit 1 "Error : phpize for PHP 5.4 don't exist"
+if [ "$ARG_BEXT_PHP54" = true ]||[ "$ARG_BUILD_EXT" = true ]; then
+  [ ! -x $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize ] && displayErrorAndExit 1 "Error : phpize for PHP 5.4 don't exist"
 
-cd SRC/EXT/
+  cd SRC/EXT/
 
-#Ext step
-for D in `find . -mindepth 1 -maxdepth 1 -type d`
-do
-  cd $D
-  if [[ $D == *"cphalcon"* ]]
-  then
-    cd build/64bits
-    #export CFLAGS="-O2 --fvisibility=hidden"
-    $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize 1>/dev/null
-    displayAndExec "\\ Configuring $D      " "./configure --enable-phalcon --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/php-config"
-    displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
-    displayAndExec "\\ Installing EXT      " "sudo make install"
-    displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
-    #unset CFLAGS
-    cd ../..
-  else
-    $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize 1>/dev/null
-    displayAndExec "\\ Configuring $D      " "./configure --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/php-config"
-    displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
-    displayAndExec "\\ Installing EXT      " "sudo make install"
-    displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
-  fi
-  cd ..
-done
+  #Ext step
+  for D in `find . -mindepth 1 -maxdepth 1 -type d`
+  do
+    cd $D
+    if [[ $D == *"cphalcon"* ]]
+    then
+      cd build/64bits
+      #export CFLAGS="-O2 --fvisibility=hidden"
+      $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize 1>/dev/null
+      displayAndExec "\\ Configuring $D      " "./configure --enable-phalcon --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/php-config"
+      displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
+      displayAndExec "\\ Installing EXT      " "sudo make install"
+      displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
+      #unset CFLAGS
+      cd ../..
+    else
+      $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize 1>/dev/null
+      displayAndExec "\\ Configuring $D      " "./configure --with-php-config=$PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/php-config"
+      displayAndExec "\\ Bulding EXT         " "make -j $NB_CORE"
+      displayAndExec "\\ Installing EXT      " "sudo make install"
+      displayAndExec "\\ Cleaning EXT        " "make clean && $PHP_INSTALL_FOLDER$PHP_54_FOLDER/bin/phpize --clean"
+    fi
+    cd ..
+  done
 
-cd ../..
+  cd ../..
+fi
 
 if [ "$ARG_START_PHP" = true ]; then
   displayAndExec "\\ Starting PHP 5.4.X      " "sudo service php-5.4-fpm start"
