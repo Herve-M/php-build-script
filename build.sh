@@ -42,12 +42,6 @@ function usage()
     echo "--update-php55-ext  | Update PHP 5.6 extentions"
     echo "--start-php         | Start PHP after install"
     echo ""
-
-    if [ "$ARG_BPHP_PHP54" = true ]||[ "$ARG_BUILD_PHP" = false ]; then
-      echo "lol"
-    else
-      echo "olo"
-    fi
 }
 
 while [ "$1" != "" ]; do
@@ -69,26 +63,32 @@ while [ "$1" != "" ]; do
             ;;
         --update-php54)
           ARG_BUILD_EXT=false
+          ARG_BUILD_PHP=false
 					ARG_BPHP_PHP54=true
             ;;
         --update-php55)
           ARG_BUILD_EXT=false
+          ARG_BUILD_PHP=false
 					ARG_BPHP_PHP55=true
             ;;
         --update-php56)
           ARG_BUILD_EXT=false
+          ARG_BUILD_PHP=false
 					ARG_BPHP_PHP56=true
             ;;
         --update-php54-ext)
           ARG_BUILD_EXT=false
+          ARG_BUILD_PHP=false
 					ARG_BEXT_PHP54=true
             ;;
         --update-php55-ext)
           ARG_BUILD_EXT=false
+          ARG_BUILD_PHP=false
 					ARG_BEXT_PHP55=true
             ;;
         --update-php56-ext)
           ARG_BUILD_EXT=false
+          ARG_BUILD_PHP=false
 					ARG_BEXT_PHP56=true
             ;;
         --start-php)
