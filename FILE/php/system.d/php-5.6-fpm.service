@@ -1,0 +1,13 @@
+[Unit]
+Description=PHP-FPM 5.6
+After=network.target
+
+[Service]
+Type=notify
+PIDFile=/var/run/PHP/5.6/php-5.6-fpm.pid
+ExecStart=/opt/PHP/5.6/sbin/php-fpm --nodaemonize --fpm-config /etc/PHP/5.6/php-fpm.conf
+ExecReload=/bin/kill -USR2 $MAINPID
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
