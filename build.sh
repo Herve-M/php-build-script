@@ -36,10 +36,10 @@ function usage()
     echo "--without-php       | Update all extensions of all PHP versions"
     echo "--update-php54      | Update PHP 5.4"
     echo "--update-php55      | Update PHP 5.5"
-    echo "--update-php55      | Update PHP 5.6"
+    echo "--update-php56      | Update PHP 5.6"
     echo "--update-php54-ext  | Update PHP 5.4 extensions"
     echo "--update-php55-ext  | Update PHP 5.5 extensions"
-    echo "--update-php55-ext  | Update PHP 5.6 extensions"
+    echo "--update-php56-ext  | Update PHP 5.6 extensions"
     echo "--start-php         | Start PHP after install"
     echo ""
 }

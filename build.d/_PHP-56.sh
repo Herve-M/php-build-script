@@ -59,7 +59,7 @@ if [ "$ARG_BPHP_PHP56" = true ]||[ "$ARG_BUILD_PHP" = true ]; then
   cd ../../..
 fi
 
-if [ "$ARG_BEXT_PHP55" = true ]||[ "$ARG_BUILD_EXT" = true ]; then
+if [ "$ARG_BEXT_PHP56" = true ]||[ "$ARG_BUILD_EXT" = true ]; then
   [ ! -x $PHP_INSTALL_FOLDER$PHP_56_FOLDER/bin/phpize ] && displayErrorAndExit 1 "Error : phpize for PHP 5.6 don't exist"
 
   cd SRC/EXT/
