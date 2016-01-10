@@ -8,14 +8,14 @@ if [ "$ARG_BPHP_PHP55" = true ]||[ "$ARG_BUILD_PHP" = true ]; then
     sudo cp FILE/php/init.d/php-5.5-fpm /etc/init.d/
     sudo cp FILE/php/PHP/5.5/php-fpm.conf /etc/PHP/5.5/
     sudo cp FILE/php/PHP/5.5/php.ini /etc/PHP/5.5/
-    cat << EOI | sudo tee -a /etc/fstab > /dev/null
+    cat <<EOI | sudo tee -a /etc/fstab > /dev/null
   #PHP 5.5
   /etc/PHP/5.5 /opt/PHP/5.5/etc none bind 0 0
   /var/log/PHP/5.5 /opt/PHP/5.5/var/log none bind 0 0
-  EOI
+EOI
     sudo mount -a
   fi
-  
+
   #Download
   _PHP_ARCHIVE=$(echo $MIRROR | sed -e "s/FILE/${PHP_55_FILE}/g")
   _PHP_ARCHIVE_SIG=$(echo $MIRROR | sed -e "s/FILE/${PHP_55_FILE}${SIG_FILE_EXT}/g")

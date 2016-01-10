@@ -8,11 +8,11 @@ if [ "$ARG_BPHP_PHP56" = true ]||[ "$ARG_BUILD_PHP" = true ]; then
     sudo cp FILE/php/init.d/php-5.6-fpm /etc/init.d/
     sudo cp FILE/php/PHP/5.6/php-fpm.conf /etc/PHP/5.6/
     sudo cp FILE/php/PHP/5.6/php.ini /etc/PHP/5.6/
-    cat << EOI | sudo tee -a /etc/fstab > /dev/null
+    cat <<EOI | sudo tee -a /etc/fstab > /dev/null
   #PHP 5.6
   /etc/PHP/5.6 /opt/PHP/5.6/etc none bind 0 0
   /var/log/PHP/5.6 /opt/PHP/5.6/var/log none bind 0 0
-  EOI
+EOI
     sudo mount -a
   fi
 

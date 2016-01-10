@@ -8,11 +8,11 @@ if [ "$ARG_BPHP_PHP54" = true ]||[ "$ARG_BUILD_PHP" = true ]; then
     sudo cp FILE/php/init.d/php-5.4-fpm /etc/init.d/
     sudo cp FILE/php/PHP/5.4/php-fpm.conf /etc/PHP/5.4/
     sudo cp FILE/php/PHP/5.4/php.ini /etc/PHP/5.4/
-    cat << EOI | sudo tee -a /etc/fstab > /dev/null
+    cat <<EOI | sudo tee -a /etc/fstab > /dev/null
   #PHP 5.4
   /etc/PHP/5.4 /opt/PHP/5.4/etc none bind 0 0
   /var/log/PHP/5.4 /opt/PHP/5.4/var/log none bind 0 0
-  EOI
+EOI
     sudo mount -a
   fi
 
