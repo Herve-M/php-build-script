@@ -15,7 +15,7 @@ readonly PHP_54_BCONF=$( cat $PHP_54_BCONG_FILE)
 readonly PHP_54_FOLDER=5.4
 
 #PHP 5.5.X
-readonly PHP_55_FILE=php-5.5.29.tar.xz
+readonly PHP_55_FILE=php-5.5.31.tar.xz
 readonly PHP_55_GPG_KEY=90D90EC1
 readonly PHP_55_GPG_FGP=0BD78B5F97500D450838F95DFE857D9A90D90EC1
 readonly PHP_55_BCONG_FILE="BCONF/php5.5.shared.conf"
@@ -23,7 +23,7 @@ readonly PHP_55_BCONF=$( cat $PHP_55_BCONG_FILE)
 readonly PHP_55_FOLDER=5.5
 
 #PHP 5.6.X
-readonly PHP_56_FILE=php-5.6.13.tar.xz
+readonly PHP_56_FILE=php-5.6.17.tar.xz
 readonly PHP_56_GPG_KEY=33CFC8B3
 readonly PHP_56_GPG_FGP=6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3
 readonly PHP_56_BCONG_FILE="BCONF/php5.6.shared.conf"
@@ -35,10 +35,10 @@ readonly PHP_56_FOLDER=5.6
 readonly EXT_ZENDOPPLUS_URL=https://github.com/zendtech/ZendOptimizerPlus/archive/v7.0.5.tar.gz
 #OnlyEnd
 readonly EXT_GEOIP_URL=https://pecl.php.net/get/geoip-1.1.0.tgz
-readonly EXT_GMAGICK_URL=https://pecl.php.net/get/gmagick-1.1.7RC3.tgz
-readonly EXT_IMAGICK_URL=https://pecl.php.net/get/imagick-3.3.0RC2.tgz
+readonly EXT_GMAGICK_URL=https://pecl.php.net/get/gmagick-2.0.1RC1.tgz
+readonly EXT_IMAGICK_URL=https://pecl.php.net/get/imagick-3.4.0RC4.tgz
 readonly EXT_GNUPG_URL=https://pecl.php.net/get/gnupg-1.3.6.tgz
-readonly EXT_PHALCON_URL=https://github.com/phalcon/cphalcon/archive/phalcon-v2.0.7.tar.gz
+readonly EXT_PHALCON_URL=https://github.com/phalcon/cphalcon/archive/phalcon-v2.0.9.tar.gz
 
 EXTS[0]=$EXT_GEOIP_URL
 EXTS[1]=$EXT_ZENDOPPLUS_URL
