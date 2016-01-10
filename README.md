@@ -40,8 +40,8 @@ cd php-build-script &&
 * `--without-php`       : Update all extensions of all PHP versions
 * `--update-php54`      : Update PHP 5.4
 * `--update-php55`      : Update PHP 5.5
-* `--update-php55`      : Update PHP 5.6
+* `--update-php56`      : Update PHP 5.6
 * `--update-php54-ext`  : Update PHP 5.4 extensions
 * `--update-php55-ext`  : Update PHP 5.5 extensions
-* `--update-php55-ext`  : Update PHP 5.6 extensions
+* `--update-php56-ext`  : Update PHP 5.6 extensions
 * `--start-php`         : Start PHP after install
