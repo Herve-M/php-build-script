@@ -1,7 +1,7 @@
 # Version
 #-----------------------------------------------------------------------------
 
-readonly MIRROR=http://ca1.php.net/get/FILE/from/this/mirror
+readonly MIRROR=http://php.net/get/FILE/from/this/mirror
 readonly SIG_FILE_EXT=.asc
 
 readonly PHP_INSTALL_FOLDER=/opt/PHP/
@@ -23,12 +23,12 @@ readonly PHP_56_BCONF=$( cat $PHP_56_BCONG_FILE)
 readonly PHP_56_FOLDER=5.6
 
 #PHP 5.7.X
-readonly PHP_56_FILE=php-7.0.5.tar.xz
-readonly PHP_56_GPG_KEY=9C0D5763
-readonly PHP_56_GPG_FGP=1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763
-readonly PHP_56_BCONG_FILE="BCONF/php5.7.shared.conf"
-readonly PHP_56_BCONF=$( cat $PHP_70_BCONG_FILE)
-readonly PHP_56_FOLDER=7.0
+readonly PHP_70_FILE=php-7.0.5.tar.xz
+readonly PHP_70_GPG_KEY=9C0D5763
+readonly PHP_70_GPG_FGP=1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763
+readonly PHP_70_BCONG_FILE="BCONF/php7.0.shared.conf"
+readonly PHP_70_BCONF=$( cat $PHP_70_BCONG_FILE)
+readonly PHP_70_FOLDER=7.0
 
 #Ext
 readonly EXT_GEOIP_URL=https://pecl.php.net/get/geoip-1.1.0.tgz
